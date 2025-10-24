@@ -1,0 +1,40 @@
+.memo_form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px;
+}
+.memo_title {
+  width: 50%;
+  height: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+.memo_contents {
+  width: 50%;
+  height: 150px;
+  padding: 10px;
+  border-radius: 5px;
+}
+.btns {
+  width: 50%;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 15px;
+}
+.submit_btn {
+  width: 150px;
+  background-color: burlywood;
+  padding: 15px;
+  border-color: burlywood;
+  cursor: pointer;
+}
+.reset_btn {
+  width: 150px;
+  background-color: peachpuff;
+  padding: 15px;
+  border-color: peachpuff;
+  cursor: pointer;
+}
