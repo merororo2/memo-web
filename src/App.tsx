@@ -3,6 +3,7 @@ import "./App.css";
 import Header from "./components/Header";
 import MemoForm from "./components/MemoForm";
 import MemoList from "./components/MemoList";
+import ToastContainer from "./components/ToastContainer";
 
 export interface MemoProps {
   title: string;
@@ -10,14 +11,24 @@ export interface MemoProps {
   createdAt: number;
   updatedAt?: number;
 }
-export type UpdateMemoProps = {
+
+export interface UpdateMemoProps {
   title: string;
   content: string;
   updatedAt: number;
-};
+}
+export interface ToastItem {
+  id: number;
+  message: string;
+  type: "success" | "error";
+  duration?: number;
+}
+
 function App() {
   const [memos, setMemos] = useState<MemoProps[]>([]);
   const [editIndex, setEditIndex] = useState<number | null>(null);
+
+  const [toasts, setToasts] = useState<ToastItem[]>([]);
 
   useEffect(() => {
     const savedMemos = localStorage.getItem("memos");
@@ -37,13 +48,14 @@ function App() {
     const updatedMemos = [...memos, newMemo];
     setMemos(updatedMemos);
     localStorage.setItem("memos", JSON.stringify(updatedMemos));
+    triggerToast("메모가 등록되었습니다 📝", "success");
   };
   const deleteMemo = (index: number) => {
     if (!confirm("삭제하시겠습니까?")) return;
     const updatedMemos = memos.filter((_, i) => i !== index);
     setMemos(updatedMemos);
     localStorage.setItem("memos", JSON.stringify(updatedMemos));
-    alert("메모를 삭제하였습니다.");
+    triggerToast("메모가 삭제되었습니다 🗑️", "error");
   };
   const updateMemo = (updatedMemo: UpdateMemoProps) => {
     if (editIndex === null) return;
@@ -62,6 +74,23 @@ function App() {
     setMemos(updatedMemos);
     localStorage.setItem("memos", JSON.stringify(updatedMemos));
     setEditIndex(null);
+    triggerToast("메모가 수정되었습니다 ✏️", "success");
+  };
+  const toastIdRef = React.useRef(0);
+  const triggerToast = (
+    message: string,
+    type: "success" | "error" = "success",
+    duration = 2500
+  ) => {
+    const id = toastIdRef.current++;
+    setToasts((prev) => [...prev, { id, message, type, duration }]);
+
+    setTimeout(() => {
+      setToasts((prev) => prev.filter((item) => item.id !== id));
+    }, 3000);
+  };
+  const removeToast = (id: number) => {
+    setToasts((prev) => prev.filter((item) => item.id !== id));
   };
   return (
     <div>
@@ -74,6 +103,7 @@ function App() {
       />
 
       <MemoList memos={memos} deleteMemo={deleteMemo} onEdit={setEditIndex} />
+      <ToastContainer toasts={toasts} removeToast={removeToast} />
     </div>
   );
 }

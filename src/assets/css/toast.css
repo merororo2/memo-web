@@ -1,0 +1,44 @@
+.toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 9999;
+}
+
+.toast {
+  position: relative;
+  min-width: 220px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 0.9rem;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: all 0.3s ease;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.toast.success {
+  background: rgba(76, 175, 80, 0.85);
+}
+
+.toast.error {
+  background: rgba(244, 67, 54, 0.85);
+}
+
+.toast-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 0 0 8px 8px;
+  transition: width 0.01s linear;
+}
