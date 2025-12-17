@@ -27,6 +27,11 @@ function MemoList({ memos, deleteMemo, onEdit }: MemoListProps) {
                 삭제
               </button>
             </div>
+            <small className="memo_date">
+              {memo.updatedAt
+                ? `수정: ${new Date(memo.updatedAt).toLocaleString("ko-KR")}`
+                : `작성: ${new Date(memo.createdAt).toLocaleString("ko-KR")}`}
+            </small>
           </div>
         ))
       )}

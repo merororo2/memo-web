@@ -1,10 +1,10 @@
 import React, { useEffect, useState, type FormEvent } from "react";
 import "../assets/css/mainForm.css";
-import type { MemoProps } from "../App";
+import type { MemoProps, UpdateMemoProps } from "../App";
 
 interface MemoFormProps {
   addMemo: (memo: MemoProps) => void;
-  updateMemo: (memo: MemoProps) => void;
+  updateMemo: (memo: UpdateMemoProps) => void;
   editMemo: MemoProps | null;
   isEdit: boolean;
 }
@@ -24,9 +24,17 @@ function MemoForm({ addMemo, updateMemo, editMemo, isEdit }: MemoFormProps) {
     if (!title.trim() || !content.trim()) return;
 
     if (isEdit) {
-      updateMemo({ title: title.trim(), content: content.trim() });
+      updateMemo({
+        title: title.trim(),
+        content: content.trim(),
+        updatedAt: Date.now(),
+      });
     } else {
-      addMemo({ title: title.trim(), content: content.trim() });
+      addMemo({
+        title: title.trim(),
+        content: content.trim(),
+        createdAt: Date.now(),
+      });
     }
     setTitle("");
     setContent("");
