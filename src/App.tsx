@@ -21,12 +21,15 @@ function App() {
     const updatedMemos = [...memos, newMemo];
     setMemos(updatedMemos);
     localStorage.setItem("memos", JSON.stringify(updatedMemos));
+    alert("메모가 등록되었습니다.");
   };
 
   const deleteMemo = (index: number) => {
+    if (!confirm("삭제하시겠습니까?")) return;
     const updatedMemos = memos.filter((_, i) => i !== index);
     setMemos(updatedMemos);
     localStorage.setItem("memos", JSON.stringify(updatedMemos));
+    alert("메모를 삭제하였습니다.");
   };
 
   return (
