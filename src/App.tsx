@@ -11,6 +11,7 @@ export interface MemoProps {
 
 function App() {
   const [memos, setMemos] = useState<MemoProps[]>([]);
+  const [editIndex, setEditIndex] = useState<number | null>(null);
 
   useEffect(() => {
     const savedMemos = localStorage.getItem("memos");
@@ -31,12 +32,31 @@ function App() {
     localStorage.setItem("memos", JSON.stringify(updatedMemos));
     alert("메모를 삭제하였습니다.");
   };
+  const updateMemo = (updatedMemo: MemoProps) => {
+    if (editIndex === null) return;
+
+    const updatedMemos = memos.map((memo, index) =>
+      index === editIndex ? updatedMemo : memo
+    );
+
+    setMemos(updatedMemos);
+    localStorage.setItem("memos", JSON.stringify(updatedMemos));
+    setEditIndex(null);
+
+    alert("메모가 수정되었습니다.");
+  };
 
   return (
     <div>
       <Header />
-      <MemoForm addMemo={addMemo} />
-      <MemoList memos={memos} deleteMemo={deleteMemo} />
+      <MemoForm
+        addMemo={addMemo}
+        updateMemo={updateMemo}
+        editMemo={editIndex !== null ? memos[editIndex] : null}
+        isEdit={editIndex !== null}
+      />
+
+      <MemoList memos={memos} deleteMemo={deleteMemo} onEdit={setEditIndex} />
     </div>
   );
 }

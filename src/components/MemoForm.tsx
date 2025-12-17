@@ -1,21 +1,33 @@
-import React, { useState, type FormEvent } from "react";
+import React, { useEffect, useState, type FormEvent } from "react";
 import "../assets/css/mainForm.css";
 import type { MemoProps } from "../App";
 
 interface MemoFormProps {
   addMemo: (memo: MemoProps) => void;
+  updateMemo: (memo: MemoProps) => void;
+  editMemo: MemoProps | null;
+  isEdit: boolean;
 }
 
-function MemoForm({ addMemo }: MemoFormProps) {
+function MemoForm({ addMemo, updateMemo, editMemo, isEdit }: MemoFormProps) {
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
+  useEffect(() => {
+    if (isEdit && editMemo) {
+      setTitle(editMemo.title);
+      setContent(editMemo.content);
+    }
+  }, [isEdit, editMemo]);
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
     if (!title.trim() || !content.trim()) return;
 
-    addMemo({ title: title.trim(), content: content.trim() });
-
+    if (isEdit) {
+      updateMemo({ title: title.trim(), content: content.trim() });
+    } else {
+      addMemo({ title: title.trim(), content: content.trim() });
+    }
     setTitle("");
     setContent("");
   }
@@ -39,7 +51,7 @@ function MemoForm({ addMemo }: MemoFormProps) {
       ></textarea>
       <div className="btns">
         <button className="submit_btn" type="submit">
-          추가
+          {isEdit ? "수정" : "추가"}
         </button>
         <button
           className="reset_btn"
