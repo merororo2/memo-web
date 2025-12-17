@@ -19,19 +19,31 @@ function MemoList({ memos, deleteMemo, onEdit }: MemoListProps) {
           <div key={index} className="memo_item">
             <h3>{memo.title}</h3>
             <p>{memo.content}</p>
-            <div className="memo_actions">
-              <button className="edit_btn" onClick={() => onEdit(index)}>
-                수정
-              </button>
-              <button className="delete_btn" onClick={() => deleteMemo(index)}>
-                삭제
-              </button>
+            <div className="memo_action_container">
+              <div className="memo_actions">
+                <button className="edit_btn" onClick={() => onEdit(index)}>
+                  수정
+                </button>
+                <button
+                  className="delete_btn"
+                  onClick={() => deleteMemo(index)}
+                >
+                  삭제
+                </button>
+              </div>
+              <small
+                className={`memo_date ${memo.updatedAt ? "edited" : "created"}`}
+              >
+                <span className="label">
+                  {memo.updatedAt ? "수정" : "작성"}
+                </span>
+                <span className="date">
+                  {new Date(memo.updatedAt ?? memo.createdAt).toLocaleString(
+                    "ko-KR"
+                  )}
+                </span>
+              </small>
             </div>
-            <small className="memo_date">
-              {memo.updatedAt
-                ? `수정: ${new Date(memo.updatedAt).toLocaleString("ko-KR")}`
-                : `작성: ${new Date(memo.createdAt).toLocaleString("ko-KR")}`}
-            </small>
           </div>
         ))
       )}
