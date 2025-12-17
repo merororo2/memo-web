@@ -27,8 +27,13 @@ export interface ToastItem {
 function App() {
   const [memos, setMemos] = useState<MemoProps[]>([]);
   const [editIndex, setEditIndex] = useState<number | null>(null);
-
   const [toasts, setToasts] = useState<ToastItem[]>([]);
+  const [darkMode, setDarkMode] = useState(false); // 모드 상태
+
+  // 모드 토글
+  const toggleDarkMode = () => {
+    setDarkMode((prev) => !prev);
+  };
 
   useEffect(() => {
     const savedMemos = localStorage.getItem("memos");
@@ -93,8 +98,13 @@ function App() {
     setToasts((prev) => prev.filter((item) => item.id !== id));
   };
   return (
-    <div>
+    <div className={darkMode ? "dark" : ""}>
       <Header />
+      <div style={{ textAlign: "right", padding: "10px 20px" }}>
+        <button onClick={toggleDarkMode}>
+          {darkMode ? "라이트 모드" : "다크 모드"}
+        </button>
+      </div>
       <MemoForm
         addMemo={addMemo}
         updateMemo={updateMemo}

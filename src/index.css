@@ -100,9 +100,12 @@ nav,
 section {
   display: block;
 }
-body {
-  background-color: Linen;
 
+html,
+body,
+#root {
+  height: 100%;
+  background-color: Linen;
   line-height: 1;
 }
 ol,
@@ -123,4 +126,39 @@ q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+/* 다크모드 적용 */
+
+.dark {
+  height: 100%;
+  background-color: #121212;
+  color: #e0e0e0;
+}
+.dark .header_title {
+  background-color: #121212;
+}
+.dark body {
+  background-color: #121212;
+}
+.dark .memo_item {
+  background-color: #d9d9d9;
+  color: #e0e0e0;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.dark button {
+  background-color: #d9d9d9;
+  color: #fff;
+}
+
+.dark input,
+.dark textarea {
+  background-color: #a5a4a4;
+  color: #e0e0e0;
+  border: 1px solid #333;
+}
+
+.dark .toast {
+  background-color: #a5a4a4;
+  color: #fff;
 }
