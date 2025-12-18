@@ -52,6 +52,29 @@
 
 ![delete memo](image-5.png)
 
+## 📝 메모 리스트 화면 (수정 버튼, 라벨, 작성 시간 표시)
+
+![memo new design](image-6.png)
+
+### ✏️ 메모 수정 화면 (메모 수정 화면, 수정 시 라벨 변경 [작성 => 수정])
+
+![edit memo1](image-7.png)
+![edit memo2](image-8.png)
+
+### 🔔 메모 알림 (Toast 활용)
+
+![memo insert notification](image-9.png)
+![memo edit notification](image-10.png)
+![memo delete notification](image-11.png)
+
+### 🌙 다크 모드 화면
+
+![dark mode](image-12.png)
+
+### 🌙 반응형 페이지
+
+![Responsive Web](image-13.png)
+
 ## ⚙️ 실행 방법
 
 ### 1️⃣ 의존성 설치
@@ -77,12 +100,8 @@ http://localhost:5173
 
 ## 💡 개선 아이디어
 
-- 메모 추가, 삭제 브라우저 알림 기능 추가
-
-- 메모 수정(Edit) 기능 추가
-
-- 메모 검색 및 필터 기능
-
-- 다크 모드 / 반응형 디자인 적용
-
-- 메모 작성 시간 표시
+- [x] 메모 추가, 삭제 브라우저 알림 기능 추가
+- [x] 메모 수정(Edit) 기능 추가
+- [ ] 메모 검색 및 필터 기능
+- [x] 다크 모드 / 반응형 디자인 적용
+- [x] 메모 작성 시간 표시
