@@ -1,4 +1,4 @@
-.toast-container {
+.toast_container {
   position: fixed;
   top: 20px;
   right: 20px;
@@ -33,7 +33,7 @@
   background: rgba(244, 67, 54, 0.85);
 }
 
-.toast-progress {
+.toast_progress {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -41,4 +41,12 @@
   background: rgba(255, 255, 255, 0.8);
   border-radius: 0 0 8px 8px;
   transition: width 0.01s linear;
+}
+@media (max-width: 720px) {
+  .toast_container {
+    top: 70px;
+  }
+  .tost {
+    width: 150px;
+  }
 }

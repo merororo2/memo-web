@@ -32,8 +32,8 @@ function Toast({
 
   return (
     <div className={`toast ${type} show`}>
-      <div className="toast-message">{message}</div>
-      <div className="toast-progress" style={{ width: `${progress}%` }}></div>
+      <div className="toast_message">{message}</div>
+      <div className="toast_progress" style={{ width: `${progress}%` }}></div>
     </div>
   );
 }

@@ -1,0 +1,76 @@
+.mode-toggle-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 10000;
+}
+
+.mode-toggle-btn {
+  background: linear-gradient(145deg, #f0f0f0, #d9d9d9);
+  color: #333;
+  border: none;
+  border-radius: 25px;
+  padding: 8px 18px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.mode-toggle-btn:hover {
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+.dark {
+  height: 100%;
+  background-color: #121212;
+  color: #e0e0e0;
+}
+.dark .header_title {
+  background-color: #121212;
+}
+.dark body {
+  background-color: #121212;
+}
+.dark .memo_item {
+  background-color: #d9d9d9;
+  color: #e0e0e0;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.dark .memo_status {
+  color: #fff;
+}
+.dark button {
+  background-color: #d9d9d9;
+  color: #000;
+  border-color: #fff;
+}
+.dark .edit_btn {
+  background: rgba(76, 175, 80, 0.85);
+}
+.dark .delete_btn {
+  background: rgba(244, 67, 54, 0.85);
+}
+.dark .memo_date .date {
+  color: #000;
+}
+.dark input,
+.dark textarea {
+  background-color: #d9d9d9;
+
+  color: black;
+}
+
+.dark .toast {
+  background-color: #d9d9d9;
+
+  color: #fff;
+}
+
+.dark .mode-toggle-btn {
+  background: linear-gradient(145deg, #333, #555);
+  color: #fff;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}

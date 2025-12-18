@@ -100,9 +100,9 @@ function App() {
   return (
     <div className={darkMode ? "dark" : ""}>
       <Header />
-      <div style={{ textAlign: "right", padding: "10px 20px" }}>
-        <button onClick={toggleDarkMode}>
-          {darkMode ? "라이트 모드" : "다크 모드"}
+      <div className="mode-toggle-container">
+        <button className="mode-toggle-btn" onClick={toggleDarkMode}>
+          {darkMode ? "🌞 라이트 모드" : "🌙 다크 모드"}
         </button>
       </div>
       <MemoForm

@@ -114,3 +114,8 @@
   background-color: #ffe6cc;
   color: #8a4b00;
 }
+@media (max-width: 720px) {
+  .memo_item {
+    width: 100%;
+  }
+}

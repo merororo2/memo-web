@@ -9,7 +9,7 @@ function ToastContainer({
   removeToast: (id: number) => void;
 }) {
   return (
-    <div className="toast-container">
+    <div className="toast_container">
       {toasts.map((toast) => (
         <Toast key={toast.id} toast={toast} onRemove={removeToast} />
       ))}
